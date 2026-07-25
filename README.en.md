@@ -1,36 +1,60 @@
-# class_tool_set
+# Class Tool Set · Space4Grow
 
-#### Description
-{**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}
+A modern static testing site for demonstrating and verifying frontend page layouts and interactions.
 
-#### Software Architecture
-Software architecture description
+## Tech Stack
 
-#### Installation
+- Pure HTML5 + CSS3
+- Zero external dependencies
+- Responsive design
+- Modern UI (gradients + glassmorphism effects)
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## Cloudflare Pages Deployment
 
-#### Instructions
+This project is configured for automatic deployment via **Cloudflare Pages**.
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### Deploy with Git Integration
 
-#### Contribution
+1. Push the code to a GitHub repository:
 
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+```bash
+git remote add origin https://github.com/your-username/class_tool_set.git
+git push -u origin main
+```
 
+2. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/)
+3. Go to **Pages** > **Create application** > **Pages**
+4. Click **Connect to Git**, authorize GitHub, and select this repository
+5. Build settings:
 
-#### Gitee Feature
+| Setting | Value |
+|---------|-------|
+| Project name | `class-tool-set` (or custom) |
+| Production branch | `main` |
+| Build command | Leave empty (static site) |
+| Build output directory | Leave empty or set to `.` |
 
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+6. Click **Save and Deploy** and wait for completion
+
+> 💡 **Tip**: Since this is a pure static site, no build step is required. Cloudflare Pages will automatically detect and deploy `index.html`.
+
+### Project Files
+
+| File | Description |
+|------|-------------|
+| `index.html` | Main page |
+| `404.html` | Custom 404 page |
+| `_headers` | Cloudflare HTTP headers configuration |
+| `_redirects` | Cloudflare redirect rules |
+| `wrangler.toml` | Cloudflare Workers/Pages config |
+| `.gitignore` | Git ignore rules |
+
+## Local Development
+
+No installation needed — just open `index.html` in your browser:
+
+```bash
+# Start a local server with Python
+python3 -m http.server 8000
+# Visit http://localhost:8000
+```

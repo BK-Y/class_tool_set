@@ -1,39 +1,60 @@
-# class_tool_set
+# Class Tool Set · Space4Grow
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+一个现代化静态测试站点，可用于展示和验证前端页面布局与交互效果。
 
-#### 软件架构
-软件架构说明
+## 技术栈
 
+- 纯 HTML5 + CSS3
+- 无外部依赖
+- 响应式设计
+- 现代化 UI（渐变 + 毛玻璃效果）
 
-#### 安装教程
+## Cloudflare Pages 部署
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+本项目已配置为可直接通过 **Cloudflare Pages** 自动部署。
 
-#### 使用说明
+### 部署方式（Git 集成）
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1. 将代码推送到 GitHub 仓库：
 
-#### 参与贡献
+```bash
+git remote add origin https://github.com/你的用户名/class_tool_set.git
+git push -u origin main
+```
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+2. 登录 [Cloudflare Dashboard](https://dash.cloudflare.com/)
+3. 进入 **Pages** 页面，点击 **创建应用程序** > **Pages**
+4. 选择 **连接到 Git**，授权 GitHub 并选择本仓库
+5. 构建设置如下：
 
+| 配置项 | 值 |
+|--------|-----|
+| 项目名称 | `class-tool-set`（或自定义） |
+| 生产分支 | `main` |
+| 构建命令 | 留空（纯静态站点） |
+| 构建输出目录 | 留空或填写 `.` |
 
-#### 特技
+6. 点击 **保存并部署**，等待部署完成即可
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+> 💡 **提示**：由于是纯静态站点，无需构建步骤。Cloudflare Pages 会自动识别并部署 `index.html`。
+
+### 项目文件说明
+
+| 文件 | 说明 |
+|------|------|
+| `index.html` | 主页面 |
+| `404.html` | 自定义 404 页面 |
+| `_headers` | Cloudflare HTTP 头配置 |
+| `_redirects` | Cloudflare 重定向规则 |
+| `wrangler.toml` | Cloudflare Workers/Pages 配置文件 |
+| `.gitignore` | Git 忽略规则 |
+
+## 本地开发
+
+无需安装，直接用浏览器打开 `index.html` 即可预览：
+
+```bash
+# 使用 Python 启动本地服务器
+python3 -m http.server 8000
+# 访问 http://localhost:8000
+```

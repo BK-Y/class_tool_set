@@ -1,0 +1,8 @@
+# Cloudflare Pages Redirects
+# https://developers.cloudflare.com/pages/platform/redirects
+
+# 如果将来有旧路径，可以在这里添加重定向
+# /old-path  /new-path  301
+
+# 404 fallback
+/*  /404.html  404
