@@ -6,8 +6,7 @@
 
 - `public/index.html`：首页
 - `public/404.html`：404 页面
-- `_headers`：响应头配置
-- `_redirects`：静态资源回退规则
+- `public/_headers`：响应头配置
 - `wrangler.toml`：Worker 配置
 - `src/index.js`：Worker 入口
 
@@ -29,4 +28,4 @@
 ## 部署原理
 
 `src/index.js` 会把所有请求转发到 `ASSETS` 绑定的静态目录。
-当请求的文件不存在时，会返回 `public/404.html`。
+当请求的文件不存在时，会返回 `public/404.html`，因此不再需要 `_redirects` 文件。

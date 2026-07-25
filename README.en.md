@@ -6,8 +6,7 @@ This is a minimal Cloudflare Worker project that serves the repository's static 
 
 - `public/index.html`: home page
 - `public/404.html`: 404 page
-- `_headers`: response headers
-- `_redirects`: fallback rule
+- `public/_headers`: response headers
 - `wrangler.toml`: Worker configuration
 - `src/index.js`: Worker entrypoint
 
@@ -29,4 +28,4 @@ Deploy command: npx wrangler deploy
 ## How it works
 
 `src/index.js` forwards every request to the `ASSETS` binding.
-If the requested file does not exist, it returns `public/404.html`.
+If the requested file does not exist, it returns `public/404.html`, so a `_redirects` file is not needed.
