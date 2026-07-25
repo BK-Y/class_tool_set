@@ -29,9 +29,10 @@ git push -u origin main
 
 | 配置项 | 值 |
 |--------|-----|
-| 项目名称 | `class-tool-set`（或自定义） |
+| 项目名称 | `inspire`（或自定义） |
 | 生产分支 | `main` |
 | 构建命令 | 留空（纯静态站点） |
+| 部署命令 | `echo "Deployed"`（空操作占位） |
 | 构建输出目录 | 留空或填写 `.` |
 
 6. 点击 **保存并部署**，等待部署完成即可
@@ -46,7 +47,6 @@ git push -u origin main
 | `404.html` | 自定义 404 页面 |
 | `_headers` | Cloudflare HTTP 头配置 |
 | `_redirects` | Cloudflare 重定向规则 |
-| `wrangler.toml` | Cloudflare Workers/Pages 配置文件 |
 | `.gitignore` | Git 忽略规则 |
 
 ## 本地开发
