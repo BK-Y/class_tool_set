@@ -1,34 +1,32 @@
-# Cloudflare Static Site
+# Cloudflare Worker Static Site
 
-This is a minimal static site template that can be deployed directly to Cloudflare Pages.
+This is a minimal Cloudflare Worker project that serves the repository's static files through a Worker.
 
 ## Files
 
 - `index.html`: home page
 - `404.html`: 404 page
 - `_headers`: response headers
-- `_redirects`: 404 fallback rule
+- `_redirects`: fallback rule
+- `wrangler.toml`: Worker configuration
+- `src/index.js`: Worker entrypoint
 
-## Deploy to GitHub + Cloudflare Pages
+## Deploy as a Cloudflare Worker
 
-1. Push this repository to GitHub.
-2. In Cloudflare Pages, choose `Connect to Git`.
-3. Select the GitHub repository and the production branch, such as `main`.
-4. Use these build settings:
+If the Cloudflare UI shows "Create Worker" instead of Pages, deploy it with this setup:
+
+1. Push the repository to GitHub, or mirror it from Gitee to GitHub.
+2. Select the repository in the Cloudflare Worker creation flow.
+3. Use these settings:
 
 ```text
 Build command: leave empty
-Build output directory: .
+Deploy command: npx wrangler deploy
 ```
 
-5. Save and deploy.
+4. Cloudflare will read `wrangler.toml` and publish the static files through the Worker.
 
-After a successful deployment, Cloudflare will provide a `*.pages.dev` URL.
+## How it works
 
-## Local Preview
-
-```bash
-python3 -m http.server 8000
-```
-
-Then open `http://localhost:8000`.
+`src/index.js` forwards every request to the `ASSETS` binding.
+If the requested file does not exist, it returns `404.html`.

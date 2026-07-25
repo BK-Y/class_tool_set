@@ -1,34 +1,32 @@
-# Cloudflare Static Site
+# Cloudflare Worker Static Site
 
-这是一个最小可用的静态站点模板，适合直接部署到 Cloudflare Pages。
+这是一个最小可用的 Cloudflare Worker 项目，用 Worker 直接托管仓库中的静态文件。
 
 ## 文件结构
 
 - `index.html`：首页
 - `404.html`：404 页面
 - `_headers`：响应头配置
-- `_redirects`：404 回退规则
+- `_redirects`：静态资源回退规则
+- `wrangler.toml`：Worker 配置
+- `src/index.js`：Worker 入口
 
-## 部署到 GitHub + Cloudflare Pages
+## Cloudflare Worker 部署
 
-1. 把仓库推送到 GitHub。
-2. 在 Cloudflare Pages 中选择 `Connect to Git`。
-3. 绑定 GitHub 仓库，并选择生产分支，例如 `main`。
-4. 构建设置使用下面这组值：
+如果你在 Cloudflare 后台看到的是“创建 Worker”而不是“创建 Pages”，就按下面方式部署：
+
+1. 仓库推送到 GitHub，或者由 Gitee 镜像同步到 GitHub。
+2. 在 Cloudflare 的 Worker 创建页选择这个仓库。
+3. 使用下面配置：
 
 ```text
-Build command: 留空
-Build output directory: .
+构建命令: 留空
+部署命令: npx wrangler deploy
 ```
 
-5. 保存并部署。
+4. Cloudflare 会读取 `wrangler.toml`，并把当前目录静态资源通过 Worker 发布出去。
 
-部署成功后，Cloudflare 会提供一个 `*.pages.dev` 域名用于访问。
+## 部署原理
 
-## 本地预览
-
-```bash
-python3 -m http.server 8000
-```
-
-然后访问 `http://localhost:8000`。
+`src/index.js` 会把所有请求转发到 `ASSETS` 绑定的静态目录。
+当请求的文件不存在时，会返回 `404.html`。
