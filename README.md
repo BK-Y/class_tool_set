@@ -4,8 +4,8 @@
 
 ## 文件结构
 
-- `index.html`：首页
-- `404.html`：404 页面
+- `public/index.html`：首页
+- `public/404.html`：404 页面
 - `_headers`：响应头配置
 - `_redirects`：静态资源回退规则
 - `wrangler.toml`：Worker 配置
@@ -24,9 +24,9 @@
 部署命令: npx wrangler deploy
 ```
 
-4. Cloudflare 会读取 `wrangler.toml`，并把当前目录静态资源通过 Worker 发布出去。
+4. Cloudflare 会读取 `wrangler.toml`，并把 `public` 目录中的静态资源通过 Worker 发布出去。
 
 ## 部署原理
 
 `src/index.js` 会把所有请求转发到 `ASSETS` 绑定的静态目录。
-当请求的文件不存在时，会返回 `404.html`。
+当请求的文件不存在时，会返回 `public/404.html`。

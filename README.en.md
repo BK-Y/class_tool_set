@@ -4,8 +4,8 @@ This is a minimal Cloudflare Worker project that serves the repository's static 
 
 ## Files
 
-- `index.html`: home page
-- `404.html`: 404 page
+- `public/index.html`: home page
+- `public/404.html`: 404 page
 - `_headers`: response headers
 - `_redirects`: fallback rule
 - `wrangler.toml`: Worker configuration
@@ -24,9 +24,9 @@ Build command: leave empty
 Deploy command: npx wrangler deploy
 ```
 
-4. Cloudflare will read `wrangler.toml` and publish the static files through the Worker.
+4. Cloudflare will read `wrangler.toml` and publish the static files from the `public` directory through the Worker.
 
 ## How it works
 
 `src/index.js` forwards every request to the `ASSETS` binding.
-If the requested file does not exist, it returns `404.html`.
+If the requested file does not exist, it returns `public/404.html`.

@@ -6,7 +6,6 @@ export default {
       return response;
     }
 
-    const url = new URL(request.url);
-    return env.ASSETS.fetch(new Request(new URL("/404.html", url), request));
+    return env.ASSETS.fetch(new Request("https://assets.local/404.html", request));
   },
 };
